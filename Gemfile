@@ -5,4 +5,6 @@ if ENV["JEKYLL_VERSION"]
   gem "jekyll", "~> #{ENV["JEKYLL_VERSION"]}"
 end
 
+puts ENV
+
 gem "json"
