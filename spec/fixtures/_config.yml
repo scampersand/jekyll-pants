@@ -1,0 +1,10 @@
+timezone: UTC
+
+gems:
+  - jekyll-pants
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: page
