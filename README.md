@@ -70,5 +70,5 @@ workaround in your invocation to de-convert en-dashes so that jekyll-pants can
 handle the conversion.
 
 ```liquid
-{{content|replace:"–"|"--"|pants}}
+{{content|replace:"–","--"|pants}}
 ```
