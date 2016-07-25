@@ -8,6 +8,20 @@ punctuation to typographic punctuation HTML entities. It relies on
 [RubyPants](https://github.com/jmcnevin/rubypants) which is a Ruby port of the
 smart-quotes library SmartyPants.
 
+<table>
+<tr><th>Input</th><th>Output</th><th>Rendered</th></tr>
+<tr>
+<td valign=top><pre>Here's an example--as
+you can see...</pre></td>
+<td valign=top><pre>Here&amp;#8217;s an example&amp;#8212;as
+you can see&amp;#8230;</pre></td>
+<td valign=top>Here&#8217;s an example&#8212;as you can see&#8230;</td>
+</tr>
+</table>
+
+
+## Rationale
+
 This plugin exists because the default Jekyll support for smart quotes is limited to:
 
  1. [Markdown](https://daringfireball.net/projects/markdown/) parsed by
@@ -19,7 +33,7 @@ This plugin exists because the default Jekyll support for smart quotes is limite
     work as desired on HTML.
 
 Unlike the built-in solutions, jekyll-pants works on HTML, making it suitable
-for applying typographic punctuation to a site of hand-authored HTML pages.
+for applying typographic punctuation to an entire site of hand-authored HTML pages.
 
 ## Usage
 
@@ -45,11 +59,13 @@ In your base layout, filter the content through the `pants` filter:
 ```
 
 Since RubyPants parses HTML tags, this will apply typographic quoting, dashes
-and ellipses, but will ignore preformatted text in `<pre>` and `<script>`.
+and ellipses to text content, but will ignore preformatted text in `<pre>` and `<script>`.
 
 ## Em-dashes vs en-dashes
 
-This plugin invokes RubyPants in "normal" mode, which means that a double-dash
+This plugin invokes RubyPants in
+["normal" mode](https://github.com/jmcnevin/rubypants/blob/master/lib/rubypants/core.rb#L5),
+which means that a double-dash
 (`--`) is converted to em-dash (—) and triple-dash (`---`) is ignored,
 reflecting the plugin author's preference. This isn't configurable but please
 feel free to file a PR if you'd like it to be.
