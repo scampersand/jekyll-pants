@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.version = "0.1.0"
   spec.authors = ["Aron Griffis"]
   spec.email = "aron@scampersand.com"
-  spec.homepage = "https://github.com/agriffis/jekyll-pants"
+  spec.homepage = "https://github.com/scampersand/jekyll-pants"
   spec.licenses = ["MIT"]
 
   spec.files = `git ls-files -z`.split("\x0")
