@@ -1,3 +1,9 @@
+require 'simplecov'
+SimpleCov.start
+
+require 'codecov'
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
+
 require 'jekyll'
 require File.expand_path('../lib/jekyll-pants', File.dirname(__FILE__))
 
