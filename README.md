@@ -1,7 +1,8 @@
 # jekyll-pants
 
-[![build status](https://img.shields.io/travis/scampersand/jekyll-pants/master.svg?style=plastic)](https://travis-ci.org/agriffis/jekyll-pants?branch=master)
-[![gem](https://img.shields.io/gem/v/jekyll-pants.svg?style=plastic)](https://rubygems.org/gems/jekyll-pants)
+[![gem](https://img.shields.io/gem/v/jekyll-pants.svg?maxAge=2592000&style=plastic)](https://rubygems.org/gems/jekyll-pants)
+[![travis](https://img.shields.io/travis/scampersand/jekyll-pants.svg?maxAge=2592000&style=plastic)](https://travis-ci.org/agriffis/jekyll-pants)
+[![codecov](https://img.shields.io/codecov/c/github/scampersand/jekyll-pants.svg?maxAge=2592000&style=plastic)](https://codecov.io/gh/scampersand/jekyll-pants)
 
 Jekyll-Pants is a [Jekyll](http://jekyllrb.com/) plugin to convert plain ASCII
 punctuation to typographic punctuation HTML entities. It relies on
