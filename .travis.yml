@@ -2,21 +2,21 @@ sudo: false
 language: ruby
 cache: bundler
 rvm:
-- 2.0
-- 2.1
-- 2.2
+#- 2.0
+#- 2.1
+#- 2.2
 matrix:
   include:
-    - # GitHub Pages
-      rvm: 2.1.1
-      env: JEKYLL_VERSION=2.4.0
+#   - # GitHub Pages
+#     rvm: 2.1.1
+#     env: JEKYLL_VERSION=2.4.0
     - rvm: 1.9.3
       env: JEKYLL_VERSION=2.5
-env:
-  matrix:
-    - JEKYLL_VERSION=2.5
-    - JEKYLL_VERSION=3.0
-    - JEKYLL_VERSION=3.2.0.pre.beta1
+#env:
+#  matrix:
+#    - JEKYLL_VERSION=2.5
+#    - JEKYLL_VERSION=3.0
+#    - JEKYLL_VERSION=3.2.0.pre.beta1
 install:
 - bundle install
 script:
