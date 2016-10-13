@@ -1,8 +1,10 @@
 require 'simplecov'
 SimpleCov.start
 
-require 'codecov'
-SimpleCov.formatter = SimpleCov::Formatter::Codecov
+if ENV['CI'] == 'true'
+  require 'codecov'
+  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+end
 
 require 'jekyll'
 require File.expand_path('../lib/jekyll-pants', File.dirname(__FILE__))
