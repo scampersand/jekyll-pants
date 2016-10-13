@@ -16,5 +16,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "jekyll", ">= 2.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "codecov"
+  #spec.add_development_dependency "codecov"
 end
