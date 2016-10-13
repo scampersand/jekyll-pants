@@ -5,18 +5,23 @@ rvm:
 - 2.0
 - 2.1
 - 2.2
+- 2.3.0
 matrix:
   include:
     - # GitHub Pages
       rvm: 2.1.1
       env: JEKYLL_VERSION=2.4.0
     - rvm: 1.9.3
-      env: JEKYLL_VERSION=2.5
+      env:
+        - JEKYLL_VERSION=2.5
+        # codecov pulls in json, breaks on 1.9.3
+        # https://travis-ci.org/scampersand/jekyll-pants/builds/167216488
+        - CODECOV=false
 env:
   matrix:
     - JEKYLL_VERSION=2.5
     - JEKYLL_VERSION=3.0
-    - JEKYLL_VERSION=3.2.0.pre.beta1
+    - JEKYLL_VERSION=3.2.1
 install:
 - bundle install
 script:
