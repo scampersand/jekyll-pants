@@ -1,9 +1,14 @@
-require 'simplecov'
-SimpleCov.start
-
-if ENV['CI'] == 'true'
-  require 'codecov'
-  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+begin
+  require 'simplecov'
+  SimpleCov.start
+  if ENV['CI'] == 'true'
+    require 'codecov'
+    SimpleCov.formatter = SimpleCov::Formatter::Codecov
+  end
+rescue LoadError => e
+  if RUBY_VERSION >= '2'
+    raise e  # codecov should exist according to Gemfile
+  end
 end
 
 require 'jekyll'
