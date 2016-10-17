@@ -79,21 +79,23 @@ pants:
 
 For the available options, see https://github.com/jmcnevin/rubypants/blob/master/lib/rubypants/core.rb
 
-## Working around kramdown
+## Compatibility with kramdown
 
-If you'd rather use RubyPants for quoting instead of kramdown, you can add this
-to `_config.yml`:
+Jekyll's default markdown processor
+is [kramdown](http://kramdown.gettalong.org/), and by default kramdown applies
+smart quoting and typographic substitutions. Its algorithm works a little
+differently from RubyPants which means that you'll get mixed results with
+content coming from both markdown and HTML sources.
+
+Jekyll-Pants supplies a parser subclass as
+[recommended by kramdown's author](https://github.com/gettalong/kramdown/pull/379).
+The subclass is called `Pantsdown` and removes the `:smart_quotes` and
+`:typographic_syms` span parsers from the list.
+
+To use this subclass and thereby defer to RubyPants for
+quotes, dashes and ellipses, put the following in your `_config.yml`:
 
 ```yaml
 kramdown:
-  smart_quotes: ["apos", "apos", "quot", "quot"]
-```
-
-Unfortunately there's no way to disable kramdown's dashes, which by default
-convert `--` to en-dash and `---` to em-dash. However you can use the following
-workaround in your invocation to de-convert en-dashes so that jekyll-pants can
-handle the conversion.
-
-```liquid
-{{content|replace:"–","--"|pants}}
+  input: Pantsdown
 ```
