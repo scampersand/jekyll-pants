@@ -1,7 +1,7 @@
 Gem::Specification.new do |spec|
   spec.name = "jekyll-pants"
   spec.summary = "Jekyll plugin to run rubypants on generated HTML"
-  spec.version = "0.1.0"
+  spec.version = "0.2.1"
   spec.authors = ["Aron Griffis"]
   spec.email = "aron@scampersand.com"
   spec.homepage = "https://github.com/scampersand/jekyll-pants"
