@@ -88,7 +88,7 @@ describe(Jekyll::PantsFilter) do
         'pants' => {
           # 1 means -- is em-dash
           'options' => [1],
-          'entities' => {:em_dash => '_mmm_', :en_dash => '_nnn_'},
+          'entities' => {'em_dash' => '_mmm_', 'en_dash' => '_nnn_'},
         }
       }
       Jekyll.configuration(Jekyll::Utils.deep_merge_hashes(overrides, pants_config))
@@ -105,7 +105,7 @@ describe(Jekyll::PantsFilter) do
     let(:config) do
       pants_config = {
         'pants' => {
-          'entities' => {:em_dash => '_mmm_', :en_dash => '_nnn_'},
+          'entities' => {'em_dash' => '_mmm_', 'en_dash' => '_nnn_'},
         }
       }
       Jekyll.configuration(Jekyll::Utils.deep_merge_hashes(overrides, pants_config))

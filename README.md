@@ -73,8 +73,7 @@ example:
 
 ```yaml
 pants:
-  options: [1, :prevent_breaks]
-  entities: {:em_dash => '&mdash;'}
+  options: [1, 'prevent_breaks']
 ```
 
 For the available options, see https://github.com/jmcnevin/rubypants/blob/master/lib/rubypants/core.rb
