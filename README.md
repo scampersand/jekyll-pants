@@ -62,14 +62,22 @@ In your base layout, filter the content through the `pants` filter:
 Since RubyPants parses HTML tags, this will apply typographic quoting, dashes
 and ellipses to text content, but will ignore preformatted text in `<pre>` and `<script>`.
 
-## Em-dashes vs en-dashes
+## Configuration
 
-This plugin invokes RubyPants in
-["normal" mode](https://github.com/jmcnevin/rubypants/blob/master/lib/rubypants/core.rb#L5),
-which means that a double-dash
-(`--`) is converted to em-dash (—) and triple-dash (`---`) is ignored,
-reflecting the plugin author's preference. This isn't configurable but please
-feel free to file a PR if you'd like it to be.
+By default, this plugin invokes RubyPants with no options, so RubyPants runs in
+its default mode which is "old-school." In old-school mode, double-dash
+translates to an en-dash and triple-dash translates to an em-dash.
+
+This can be modified in Jekyll's `_config.yml` under the `pants` key, for
+example:
+
+```yaml
+pants:
+  options: [1, :prevent_breaks]
+  entities: {:em_dash => '&mdash;'}
+```
+
+For the available options, see https://github.com/jmcnevin/rubypants/blob/master/lib/rubypants/core.rb
 
 ## Working around kramdown
 
