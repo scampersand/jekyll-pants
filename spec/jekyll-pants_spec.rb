@@ -17,13 +17,13 @@ describe(Jekyll::PantsFilter) do
   let(:markdown_output) { File.read(dest_dir("markdown/with-pants.html")) }
 
   it "makes HTML pretty" do
-    expect(html_output).to match /#{Regexp.quote "Makin&#8217; it purty&#8212;don&#8217;t you think?"}/
+    expect(html_output).to match /#{Regexp.quote "Makin&#8217; it purty&#8211;don&#8217;t you think?"}/
     expect(html_output).to_not match /Makin'|purty--don|don't/
   end
 
   it "preserves HTML pre" do
     expect(html_output).to match /#{Regexp.quote "But not this! This shouldn't be pretty--because it's code."}/
-    expect(html_output).to_not match /shouldn\&#8217;t|pretty\&#8212;because/
+    expect(html_output).to_not match /shouldn\&#8217;t|pretty\&#8211;because/
   end
 
   it "preserves kramdown smart quotes" do
@@ -33,7 +33,7 @@ describe(Jekyll::PantsFilter) do
 
   it "preserves code in markdown" do
     expect(markdown_output).to match /#{Regexp.quote "But not this! This shouldn't be pretty--because it's code."}/
-    expect(markdown_output).to_not match /shouldn\&#8217;t|pretty\&#8212;because/
+    expect(markdown_output).to_not match /shouldn\&#8217;t|pretty\&#8211;because/
   end
 
   context "without kramdown smart quotes" do
@@ -70,4 +70,38 @@ describe(Jekyll::PantsFilter) do
     end
   end
 
+  context "with config" do
+    let(:config) do
+      pants_config = {
+        'pants' => {
+          # 1 means -- is em-dash
+          'options' => [1],
+          'entities' => {:em_dash => '_mmm_', :en_dash => '_nnn_'},
+        }
+      }
+      Jekyll.configuration(Jekyll::Utils.deep_merge_hashes(overrides, pants_config))
+    end
+
+    it "honors the config" do
+      expect(html_output).to match /_mmm_/
+      expect(html_output).to_not match /_nnn_/
+    end
+  end
+
+  context "with lonely entities config" do
+    # this hits the warning and forces options => [2]
+    let(:config) do
+      pants_config = {
+        'pants' => {
+          'entities' => {:em_dash => '_mmm_', :en_dash => '_nnn_'},
+        }
+      }
+      Jekyll.configuration(Jekyll::Utils.deep_merge_hashes(overrides, pants_config))
+    end
+
+    it "honors the config" do
+      expect(html_output).to match /_nnn_/
+      expect(html_output).to_not match /_mmm_/
+    end
+  end
 end
