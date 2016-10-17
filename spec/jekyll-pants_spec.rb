@@ -36,6 +36,18 @@ describe(Jekyll::PantsFilter) do
     expect(markdown_output).to_not match /shouldn\&#8217;t|pretty\&#8211;because/
   end
 
+  context "with Pantsdown" do
+    let(:config) do
+      config_pantsdown = {"kramdown" => {"input" => "Pantsdown"}}
+      Jekyll.configuration(Jekyll::Utils.deep_merge_hashes(overrides, config_pantsdown))
+    end
+
+    it "makes markdown pretty" do
+      expect(markdown_output).to match /#{Regexp.quote "Makin&#8217; it purty&#8211;don&#8217;t you think?"}/
+      expect(markdown_output).to_not match /Makin'|purty--don|don't/
+    end
+  end
+
   context "without kramdown smart quotes" do
     let(:config) do
       dumb_kramdown = {"kramdown" => {"smart_quotes" => ["apos", "apos", "quot", "quot"]}}
